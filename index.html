@@ -138,7 +138,7 @@ j.max(i.left,0))*j.max(0,j.min(i.bottom,m.innerHeight)-j.max(i.top,0))/i.width/i
                 const greenlandText = await greenlandResponse.text();
                 document.querySelector('#greenland-status p').textContent = greenlandText;
 
-                const antarcticaResponse = await fetch('status/ant.txt.txt');
+                const antarcticaResponse = await fetch('status/ant.txt');
                 const antarcticaText = await antarcticaResponse.text();
                 document.querySelector('#antarctica-status p').textContent = antarcticaText;
             } catch (error) {
