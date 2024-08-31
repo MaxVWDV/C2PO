@@ -119,20 +119,36 @@ j.max(i.left,0))*j.max(0,j.min(i.bottom,m.innerHeight)-j.max(i.top,0))/i.width/i
         </div>
     </div>
 
-    <div class="status-container">
-        <div class="status-report">
-            <h2>Greenland Status Report 2024-08-31</h2>
-            <p><strong>Greenland:</strong> Insert brief status report here.</p>
-
+    <div class="status-report">
+        <div id="greenland-status">
+            <h2>Greenland Status Report</h2>
+            <p>Loading...</p>
         </div>
-
-        <div class="status-report">
-            <h2>Antarctica Status Report 2024-08-31</h2>
-            <p><strong>Antarctica:</strong> Insert brief status report here.</p>
-
+        <div id="antarctica-status">
+            <h2>Antarctica Status Report</h2>
+            <p>Loading...</p>
         </div>
-
     </div>
+
+    <script>
+        // Function to fetch and display status report content
+        async function loadStatusReports() {
+            try {
+                const greenlandResponse = await fetch('greenland_status.txt');
+                const greenlandText = await greenlandResponse.text();
+                document.querySelector('#greenland-status p').textContent = greenlandText;
+
+                const antarcticaResponse = await fetch('antarctica_status.txt');
+                const antarcticaText = await antarcticaResponse.text();
+                document.querySelector('#antarctica-status p').textContent = antarcticaText;
+            } catch (error) {
+                console.error('Error loading status reports:', error);
+            }
+        }
+
+        // Load status reports when the page loads
+        window.onload = loadStatusReports;
+    </script>
 
 </body>
 
